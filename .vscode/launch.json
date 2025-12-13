@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Flutter (debug) -time_tracker",
+      "request": "launch",
+      "type": "dart",
+      "program": "${workspaceFolder:time_tracker}/lib/main.dart",
+      "flutterMode": "debug",
+      "deviceId": "chrome", 
+      "args": ["--web-port", "33203"]
+    }
+
+
+  ]
+}
