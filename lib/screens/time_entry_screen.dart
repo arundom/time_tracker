@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 import 'package:time_tracker/models/project.dart';
 import 'package:time_tracker/providers/time_entry_provider.dart';
 import 'package:time_tracker/models/time_entry.dart';
@@ -111,6 +112,7 @@ final TimeEntry = TimeEntry(
                 }).toList(),
             ),
 */
+            // This is for hours worked
             TextFormField(
                 decoration: InputDecoration(labelText: 'Total Time (hours)'),
                 keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -125,6 +127,8 @@ final TimeEntry = TimeEntry(
                 },
                 onSaved: (value) => totalTime = double.parse(value!),
             ),
+            
+            // This is for notes
             TextFormField(
                 decoration: InputDecoration(labelText: 'Notes'),
                 validator: (value) {
@@ -135,6 +139,43 @@ final TimeEntry = TimeEntry(
                 },
                 onSaved: (value) => notes = value!,
             ),
+            
+            // Date picker
+            SizedBox(height: 20),
+            // Display selected date
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+           ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepPurple[100],
+              foregroundColor: Colors.deepPurple[800],
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            ),
+                  icon: Icon(Icons.calendar_today),
+                  label: Text("Select Date:"),
+                  onPressed: () async {
+                    final DateTime? picked = await showDatePicker(
+                      context: context,
+                      initialDate: _selectedDate,
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2101),
+                    );
+                    if (picked != null && picked != _selectedDate) {
+                      setState(() {
+                        _selectedDate = picked;
+                      });
+                    }
+                  },
+                ),  
+              Text(" ${DateFormat('MMM dd, yyyy').format(_selectedDate)}",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+             ],
+            ),
+      
+            SizedBox(height: 20),
+
             ElevatedButton(
                 onPressed: () {
                 
