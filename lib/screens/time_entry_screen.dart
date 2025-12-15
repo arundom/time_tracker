@@ -26,18 +26,6 @@ class _AddTimeEntryScreenState extends State<AddTimeEntryScreen> {
   String? _selectedTaskId;
   DateTime _selectedDate = DateTime.now();
 
-/*
-final TimeEntry = TimeEntry(
-      id: widget.?.id ??
-          DateTime.now().toString(), // Assuming you generate IDs like this
-      amount: double.parse(_amountController.text),
-      categoryId: _selectedCategoryId!,
-      payee: _payeeController.text,
-      note: _noteController.text,
-      date: _selectedDate,
-      tag: _selectedTagId!,
-    );
-*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(

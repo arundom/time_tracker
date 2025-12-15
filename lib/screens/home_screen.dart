@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
     child:Scaffold(
       appBar: AppBar(
         title: Text('Time Tracking'),
-          backgroundColor: Colors.deepPurple[800],
+          backgroundColor: Colors.green[800],
           foregroundColor: Colors.white,
           centerTitle: true,
           
@@ -220,8 +220,23 @@ Widget buildGroupedByProjectsView() {
   return Consumer<TimeEntryProvider>(
     builder: (context, provider, child) {
       if (provider.entries.isEmpty) {
-        return Center(child: Text("No entries to group.", style: TextStyle(color: Colors.grey[600])));
+        //return Center(child: Text("No time entries yet\nTap the + button to add one.", style: TextStyle(color: Colors.grey[600])));
+      return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text("There are no projects or time entries yet.", style: TextStyle(color: Colors.grey[700], fontSize: 18)),
+              SizedBox(height: 8),
+              Text("Tap the + button to add your first time entry.", style: TextStyle(color: Colors.grey[600])),
+              SizedBox(height: 8),
+             // Text("You can manage projects and tasks from the menu.", style: TextStyle(color: Colors.grey[600])),
+            ],
+          ),
+        );
+      
       }
+
+
 
       // Group entries by project
       Map<String, List<TimeEntry>> grouped = {};
